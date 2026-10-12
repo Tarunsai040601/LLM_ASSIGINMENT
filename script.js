@@ -14,7 +14,8 @@ const answerKey = {
 const quizForm = document.querySelector("#quiz-form");
 const results = document.querySelector("#results");
 const answerInputs = [...quizForm.querySelectorAll('input[type="radio"], input[type="text"]')];
-const totalAnswers = answerInputs.length;
+const totalAnswers = new Set(answerInputs.filter((input) => input.type === "radio").map((input) => input.name)).size
+	+ answerInputs.filter((input) => input.type === "text").length;
 const progressTrack = document.querySelector("#progress-track");
 const progressFill = document.querySelector("#progress-fill");
 const progressText = document.querySelector("#progress-text");

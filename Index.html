@@ -3,225 +3,1950 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f2f7e9">
-    <title>Wild About Food | Animal Food Test</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <meta name="description" content="Interactive Science Test - Animals and Their Food Habits Quiz for Students">
+    <title>🐾 Animal Science Quiz | Interactive Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        // Apply saved or system theme immediately to prevent FOIT (Flash of Incorrect Theme)
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('quiz-theme');
+                if (savedTheme === 'light' || savedTheme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', savedTheme);
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            } catch(e) {}
+        })();
+    </script>
+    <style>
+        /* ========== CSS CUSTOM PROPERTIES ========== */
+        :root, [data-theme="dark"] {
+            color-scheme: dark;
+            --bg-primary: #0f0c29;
+            --bg-secondary: #302b63;
+            --bg-tertiary: #24243e;
+            --body-bg: radial-gradient(ellipse at 50% 0%, #1a1548 0%, #0f0c29 70%);
+            --accent-1: #ff6b6b;
+            --accent-2: #ffd93d;
+            --accent-3: #6bcb77;
+            --accent-4: #4d96ff;
+            --accent-5: #c084fc;
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-shadow: rgba(0, 0, 0, 0.35);
+            --card-hover-border: rgba(255, 255, 255, 0.22);
+            --card-hover-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b0c8;
+            --text-muted: #8585a3;
+            --correct-color: #22c55e;
+            --incorrect-color: #ef4444;
+            --pill-bg: rgba(255, 255, 255, 0.06);
+            --pill-border: rgba(255, 255, 255, 0.08);
+            --pill-hover-bg: rgba(255, 255, 255, 0.12);
+            --badge-pending-bg: rgba(255, 255, 255, 0.08);
+            --badge-pending-text: #b0b0c8;
+            --btn-secondary-bg: rgba(255, 255, 255, 0.07);
+            --btn-secondary-border: rgba(255, 255, 255, 0.12);
+            --btn-secondary-hover-bg: rgba(255, 255, 255, 0.14);
+            --step-dot-bg: rgba(255, 255, 255, 0.1);
+            --blank-border: rgba(255, 255, 255, 0.35);
+            --option-bg: rgba(255, 255, 255, 0.04);
+            --option-border: rgba(255, 255, 255, 0.09);
+            --option-hover-bg: rgba(255, 255, 255, 0.08);
+            --option-hover-border: rgba(255, 255, 255, 0.2);
+            --option-letter-bg: rgba(255, 255, 255, 0.08);
+            --option-letter-text: #b0b0c8;
+            --tf-btn-bg: rgba(255, 255, 255, 0.04);
+            --tf-btn-border: rgba(255, 255, 255, 0.09);
+            --tf-btn-hover-bg: rgba(255, 255, 255, 0.08);
+            --input-bg: rgba(255, 255, 255, 0.04);
+            --input-border: rgba(255, 255, 255, 0.11);
+            --input-placeholder: rgba(255, 255, 255, 0.22);
+            --input-label-bg: #141133;
+            --card-sheen: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.03) 100%);
+            --orb-opacity: 0.3;
+            --particle-opacity: 0.12;
+            --scrollbar-track: #0f0c29;
+            --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+            --nav-bg: rgba(20, 16, 50, 0.6);
+            --nav-border: rgba(255, 255, 255, 0.1);
+            --theme-toggle-bg: rgba(255, 255, 255, 0.07);
+            --theme-toggle-border: rgba(255, 255, 255, 0.12);
+            --toggle-track-bg: rgba(10, 8, 25, 0.85);
+            --toggle-track-border: rgba(255, 255, 255, 0.15);
+            --theme-toggle-indicator: #ffd93d;
+            --theme-toggle-indicator-shadow: 0 0 12px rgba(255, 217, 61, 0.6);
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Light Theme */
+        [data-theme="light"] {
+            color-scheme: light;
+            --bg-primary: #f5f7fc;
+            --bg-secondary: #e8eefa;
+            --bg-tertiary: #dbe4f6;
+            --body-bg: radial-gradient(ellipse at 50% 0%, #e6efff 0%, #f5f7fc 70%);
+            --accent-1: #e11d48;
+            --accent-2: #d97706;
+            --accent-3: #059669;
+            --accent-4: #2563eb;
+            --accent-5: #7c3aed;
+            --glass-bg: rgba(255, 255, 255, 0.86);
+            --glass-border: rgba(210, 222, 244, 0.85);
+            --glass-shadow: rgba(30, 45, 85, 0.08);
+            --card-hover-border: rgba(147, 180, 240, 0.9);
+            --card-hover-shadow: 0 22px 50px rgba(30, 45, 85, 0.14);
+            --text-primary: #151e36;
+            --text-secondary: #4b5874;
+            --text-muted: #73829c;
+            --correct-color: #16a34a;
+            --incorrect-color: #dc2626;
+            --pill-bg: rgba(255, 255, 255, 0.9);
+            --pill-border: rgba(200, 215, 240, 0.85);
+            --pill-hover-bg: #ffffff;
+            --badge-pending-bg: rgba(225, 235, 250, 0.85);
+            --badge-pending-text: #4b5874;
+            --btn-secondary-bg: rgba(255, 255, 255, 0.92);
+            --btn-secondary-border: rgba(200, 215, 240, 0.9);
+            --btn-secondary-hover-bg: #ffffff;
+            --step-dot-bg: rgba(180, 198, 230, 0.5);
+            --blank-border: rgba(30, 45, 85, 0.4);
+            --option-bg: rgba(255, 255, 255, 0.88);
+            --option-border: rgba(210, 222, 244, 0.9);
+            --option-hover-bg: #ffffff;
+            --option-hover-border: rgba(37, 99, 235, 0.45);
+            --option-letter-bg: rgba(230, 238, 252, 0.95);
+            --option-letter-text: #2c3e60;
+            --tf-btn-bg: rgba(255, 255, 255, 0.88);
+            --tf-btn-border: rgba(210, 222, 244, 0.9);
+            --tf-btn-hover-bg: #ffffff;
+            --input-bg: #ffffff;
+            --input-border: rgba(195, 212, 240, 0.95);
+            --input-placeholder: rgba(115, 130, 156, 0.65);
+            --input-label-bg: #f5f7fc;
+            --card-sheen: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.6) 100%);
+            --orb-opacity: 0.22;
+            --particle-opacity: 0.22;
+            --scrollbar-track: #f5f7fc;
+            --scrollbar-thumb: rgba(160, 180, 215, 0.5);
+            --nav-bg: rgba(255, 255, 255, 0.82);
+            --nav-border: rgba(210, 222, 244, 0.85);
+            --theme-toggle-bg: rgba(255, 255, 255, 0.92);
+            --theme-toggle-border: rgba(200, 215, 240, 0.9);
+            --toggle-track-bg: #e2e8f5;
+            --toggle-track-border: rgba(190, 208, 238, 0.9);
+            --theme-toggle-indicator: #f59e0b;
+            --theme-toggle-indicator-shadow: 0 0 12px rgba(245, 158, 11, 0.55);
+        }
+
+        /* Smooth Theme Transition Class */
+        html.theme-transitioning,
+        html.theme-transitioning *,
+        html.theme-transitioning *::before,
+        html.theme-transitioning *::after {
+            transition: background-color 0.35s ease,
+                        background 0.35s ease,
+                        color 0.35s ease,
+                        border-color 0.35s ease,
+                        box-shadow 0.35s ease !important;
+            transition-delay: 0s !important;
+        }
+
+        /* ========== GLOBAL RESET ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--body-bg, var(--bg-primary));
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* ========== ANIMATED BACKGROUND ========== */
+        .bg-animation {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0; overflow: hidden; pointer-events: none;
+        }
+
+        .bg-animation .orb {
+            position: absolute; border-radius: 50%;
+            filter: blur(80px); opacity: var(--orb-opacity);
+            animation: floatOrb 20s ease-in-out infinite;
+            transition: opacity 0.5s ease;
+        }
+
+        .bg-animation .orb:nth-child(1) {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, #ff6b6b, transparent);
+            top: -10%; left: -10%; animation-duration: 25s;
+        }
+        .bg-animation .orb:nth-child(2) {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #4d96ff, transparent);
+            top: 50%; right: -10%; animation-duration: 30s; animation-delay: -5s;
+        }
+        .bg-animation .orb:nth-child(3) {
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, #c084fc, transparent);
+            bottom: -5%; left: 30%; animation-duration: 22s; animation-delay: -10s;
+        }
+        .bg-animation .orb:nth-child(4) {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, #6bcb77, transparent);
+            top: 20%; left: 60%; animation-duration: 28s; animation-delay: -15s;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(80px, -60px) scale(1.1); }
+            50% { transform: translate(-40px, 80px) scale(0.9); }
+            75% { transform: translate(60px, 40px) scale(1.05); }
+        }
+
+        /* ========== PARTICLES ========== */
+        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .particle {
+            position: absolute; font-size: 1.5rem; opacity: var(--particle-opacity);
+            animation: particleFloat 18s linear infinite;
+            transition: opacity 0.5s ease;
+        }
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: var(--particle-opacity); }
+            90% { opacity: var(--particle-opacity); }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* ========== CONFETTI ========== */
+        #confetti-canvas {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1001; pointer-events: none;
+        }
+
+        /* ========== CONTAINER ========== */
+        .container {
+            position: relative; z-index: 1;
+            max-width: 750px; margin: 0 auto; padding: 20px;
+            min-height: 100vh; display: flex; flex-direction: column;
+        }
+
+        /* ========== APP HEADER & THEME TOGGLE ========== */
+        .app-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            margin-bottom: 25px;
+            background: var(--nav-bg);
+            border: 1px solid var(--nav-border);
+            border-radius: 20px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 8px 30px var(--glass-shadow);
+            transition: var(--transition-smooth);
+            z-index: 10;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            user-select: none;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+        .header-brand:hover {
+            transform: translateY(-1px);
+            opacity: 0.92;
+        }
+
+        .brand-badge {
+            font-size: 1.6rem;
+            display: grid;
+            place-items: center;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+            transition: var(--transition-smooth);
+        }
+        .header-brand:hover .brand-badge {
+            transform: scale(1.1) rotate(6deg);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-title {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text-primary);
+            letter-spacing: 0.3px;
+        }
+        .brand-sub {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--theme-toggle-bg);
+            border: 1px solid var(--theme-toggle-border);
+            padding: 6px 14px 6px 8px;
+            border-radius: 40px;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 14px var(--glass-shadow);
+            outline: none;
+        }
+        .theme-toggle-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-4);
+            box-shadow: 0 6px 22px rgba(77, 150, 255, 0.28);
+        }
+        .theme-toggle-btn:focus-visible {
+            outline: 2px solid var(--accent-4);
+            outline-offset: 2px;
+        }
+
+        .toggle-track {
+            position: relative;
+            width: 52px;
+            height: 28px;
+            background: var(--toggle-track-bg);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6px;
+            border: 1px solid var(--toggle-track-border);
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+
+        .toggle-icon-bg {
+            font-size: 0.8rem;
+            line-height: 1;
+            z-index: 1;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            user-select: none;
+        }
+        .sun-bg {
+            opacity: 0.45;
+        }
+        .moon-bg {
+            opacity: 0.85;
+        }
+
+        .theme-toggle-btn.is-light .sun-bg {
+            opacity: 0.95;
+            transform: scale(1.1);
+        }
+        .theme-toggle-btn.is-light .moon-bg {
+            opacity: 0.35;
+            transform: scale(0.9);
+        }
+
+        .toggle-thumb {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--theme-toggle-indicator);
+            box-shadow: var(--theme-toggle-indicator-shadow);
+            display: grid;
+            place-items: center;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, box-shadow 0.3s ease;
+            z-index: 2;
+        }
+
+        .thumb-icon {
+            font-size: 0.72rem;
+            line-height: 1;
+            user-select: none;
+            transition: transform 0.4s ease;
+        }
+
+        .theme-toggle-btn.is-light .toggle-thumb {
+            transform: translateX(24px);
+        }
+        .theme-toggle-btn.is-light .thumb-icon {
+            transform: rotate(360deg);
+        }
+
+        .toggle-text {
+            letter-spacing: 0.5px;
+            user-select: none;
+            min-width: 36px;
+            text-align: left;
+        }
+
+        /* ========== VIEW MANAGEMENT ========== */
+        .view { display: none; animation: viewEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        .view.active { display: flex; flex-direction: column; }
+
+        @keyframes viewEnter {
+            0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* ========== HOME VIEW ========== */
+        #home-view { align-items: center; padding-top: 20px; flex: 1; }
+
+        .home-header {
+            text-align: center; margin-bottom: 45px;
+            animation: headerFloat 1s ease forwards;
+            opacity: 0;
+        }
+        @keyframes headerFloat {
+            0% { opacity: 0; transform: rotateX(15deg) translateY(-40px); }
+            100% { opacity: 1; transform: rotateX(0) translateY(0); }
+        }
+
+        .home-emoji {
+            font-size: 5rem; display: block; margin-bottom: 10px;
+            animation: bounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 8px 16px var(--glass-shadow));
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+
+        .home-header h1 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 3rem; font-weight: 800;
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #c084fc);
+            background-size: 300% 300%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .home-header .subtitle {
+            font-size: 1.05rem; color: var(--text-secondary);
+            font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .home-stats {
+            display: flex; gap: 20px; margin-top: 25px;
+            justify-content: center; flex-wrap: wrap;
+        }
+
+        .stat-pill {
+            display: flex; align-items: center; gap: 8px;
+            background: var(--pill-bg); padding: 10px 20px;
+            border-radius: 50px; font-size: 0.85rem; font-weight: 700;
+            border: 1px solid var(--pill-border);
+            color: var(--text-primary);
+            box-shadow: 0 4px 15px var(--glass-shadow);
+            transition: var(--transition-smooth);
+        }
+        .stat-pill:hover { background: var(--pill-hover-bg); transform: translateY(-2px); }
+        .stat-pill .icon { font-size: 1.2rem; }
+
+        /* ========== SECTION CARDS (Home) ========== */
+        .sections-grid {
+            display: flex; flex-direction: column; gap: 20px;
+            width: 100%; max-width: 600px;
+        }
+
+        .section-card {
+            position: relative; overflow: hidden;
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 24px; padding: 30px 35px;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            cursor: pointer; transition: var(--transition-smooth);
+            transform-style: preserve-3d;
+            box-shadow: 0 12px 40px var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.08);
+            display: flex; align-items: center; gap: 22px;
+            animation: cardStagger 0.6s ease forwards;
+            opacity: 0;
+        }
+        .section-card:nth-child(1) { animation-delay: 0.3s; }
+        .section-card:nth-child(2) { animation-delay: 0.5s; }
+        .section-card:nth-child(3) { animation-delay: 0.7s; }
+
+        @keyframes cardStagger {
+            from { opacity: 0; transform: translateX(-40px) rotateY(-5deg); }
+            to { opacity: 1; transform: translateX(0) rotateY(0); }
+        }
+
+        .section-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 5px; height: 100%; border-radius: 24px 0 0 24px;
+        }
+        .section-card[data-section="1"]::before { background: linear-gradient(180deg, #ff6b6b, #ee5a24); }
+        .section-card[data-section="2"]::before { background: linear-gradient(180deg, #ffd93d, #f0932b); }
+        .section-card[data-section="3"]::before { background: linear-gradient(180deg, #6bcb77, #38ada9); }
+
+        .section-card:hover {
+            transform: translateY(-6px) rotateX(2deg) scale(1.02);
+            box-shadow: var(--card-hover-shadow), inset 0 1px 0 rgba(255,255,255,0.15);
+            border-color: var(--card-hover-border);
+        }
+
+        .section-card:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .section-card .card-icon {
+            width: 64px; height: 64px; border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; flex-shrink: 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: var(--transition-smooth);
+        }
+        .section-card:hover .card-icon { transform: rotateY(15deg) scale(1.1); }
+
+        .section-card[data-section="1"] .card-icon { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+        .section-card[data-section="2"] .card-icon { background: linear-gradient(135deg, #ffd93d, #f0932b); }
+        .section-card[data-section="3"] .card-icon { background: linear-gradient(135deg, #6bcb77, #38ada9); }
+
+        .card-info { flex: 1; }
+        .card-info h3 {
+            font-family: 'Baloo 2', cursive; font-size: 1.35rem;
+            font-weight: 700; margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+        .card-info p { font-size: 0.85rem; color: var(--text-secondary); font-weight: 600; }
+
+        .card-arrow {
+            font-size: 1.5rem; color: var(--text-secondary);
+            transition: var(--transition-smooth);
+        }
+        .section-card:hover .card-arrow { transform: translateX(6px); color: var(--text-primary); }
+
+        .section-card .card-badge {
+            position: absolute; top: 14px; right: 18px;
+            font-size: 0.7rem; font-weight: 800;
+            padding: 4px 12px; border-radius: 50px;
+            text-transform: uppercase; letter-spacing: 1px;
+            transition: var(--transition-smooth);
+        }
+        .badge-pending {
+            background: var(--badge-pending-bg);
+            color: var(--badge-pending-text);
+            border: 1px solid var(--pill-border);
+        }
+        .badge-complete {
+            background: rgba(34,197,94,0.18);
+            color: var(--correct-color);
+            border: 1px solid rgba(34,197,94,0.3);
+        }
+        .badge-progress {
+            background: rgba(77,150,255,0.18);
+            color: var(--accent-4);
+            border: 1px solid rgba(77,150,255,0.3);
+        }
+
+        /* ========== QUIZ VIEW ========== */
+        #quiz-view { flex: 1; padding-top: 10px; }
+
+        /* Top bar */
+        .quiz-topbar {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 20px; gap: 15px;
+        }
+
+        .back-btn {
+            display: flex; align-items: center; gap: 8px;
+            background: var(--btn-secondary-bg); border: 1px solid var(--btn-secondary-border);
+            padding: 10px 20px; border-radius: 14px;
+            color: var(--text-primary); font-family: 'Nunito', sans-serif;
+            font-size: 0.9rem; font-weight: 700; cursor: pointer;
+            box-shadow: 0 4px 14px var(--glass-shadow);
+            transition: var(--transition-smooth);
+        }
+        .back-btn:hover { background: var(--btn-secondary-hover-bg); transform: translateX(-3px); }
+        .back-btn .arrow { font-size: 1.1rem; transition: var(--transition-smooth); }
+        .back-btn:hover .arrow { transform: translateX(-4px); }
+
+        .question-counter {
+            font-family: 'Baloo 2', cursive; font-size: 1rem; font-weight: 700;
+            color: var(--text-secondary);
+        }
+        .question-counter span { color: var(--accent-4); font-size: 1.3rem; }
+
+        /* Step progress */
+        .step-progress {
+            display: flex; gap: 6px; margin-bottom: 30px; align-items: center;
+        }
+
+        .step-dot {
+            height: 6px; flex: 1; border-radius: 10px;
+            background: var(--step-dot-bg);
+            transition: var(--transition-smooth);
+            position: relative; overflow: hidden;
+        }
+        .step-dot.completed {
+            background: var(--correct-color);
+            box-shadow: 0 0 10px rgba(34,197,94,0.3);
+        }
+        .step-dot.current {
+            background: var(--accent-4);
+            box-shadow: 0 0 12px rgba(77,150,255,0.4);
+            animation: stepPulse 1.5s ease-in-out infinite;
+        }
+        @keyframes stepPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* ========== QUESTION DISPLAY CARD ========== */
+        .question-stage {
+            perspective: 1200px;
+            min-height: 300px;
+        }
+
+        .question-card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 28px; padding: 40px 35px;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.08);
+            transform-style: preserve-3d;
+            transition: var(--transition-smooth);
+            position: relative; overflow: hidden;
+        }
+
+        .question-card::after {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--card-sheen);
+            pointer-events: none;
+        }
+
+        /* Card enter/exit animations */
+        .card-enter {
+            animation: cardEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        @keyframes cardEnter {
+            0% { opacity: 0; transform: translateX(80px) rotateY(-8deg) scale(0.9); }
+            100% { opacity: 1; transform: translateX(0) rotateY(0) scale(1); }
+        }
+
+        .card-exit {
+            animation: cardExit 0.35s ease forwards;
+        }
+        @keyframes cardExit {
+            0% { opacity: 1; transform: translateX(0) scale(1); }
+            100% { opacity: 0; transform: translateX(-80px) rotateY(8deg) scale(0.9); }
+        }
+
+        .question-number-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px; border-radius: 50px;
+            font-size: 0.8rem; font-weight: 800;
+            margin-bottom: 18px; letter-spacing: 1px; text-transform: uppercase;
+        }
+        .sec-1-badge { background: rgba(255,107,107,0.15); color: var(--accent-1); }
+        .sec-2-badge { background: rgba(255,217,61,0.15); color: var(--accent-2); }
+        .sec-3-badge { background: rgba(107,203,119,0.15); color: var(--accent-3); }
+
+        .question-text {
+            font-size: 1.3rem; font-weight: 700;
+            margin-bottom: 28px; line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .question-text .blank {
+            display: inline-block; min-width: 110px;
+            border-bottom: 3px dashed var(--blank-border);
+            margin: 0 5px;
+        }
+
+        /* ========== MCQ OPTIONS ========== */
+        .options-list {
+            display: flex; flex-direction: column; gap: 12px;
+        }
+
+        .option-btn {
+            display: flex; align-items: center; gap: 16px;
+            padding: 18px 24px; background: var(--option-bg);
+            border: 2px solid var(--option-border); border-radius: 18px;
+            cursor: pointer; transition: var(--transition-smooth);
+            position: relative; overflow: hidden;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 15px var(--glass-shadow);
+            color: var(--text-primary);
+        }
+
+        .option-btn::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+            transition: left 0.5s ease;
+        }
+        .option-btn:hover::before { left: 100%; }
+
+        .option-btn:hover {
+            background: var(--option-hover-bg);
+            border-color: var(--option-hover-border);
+            transform: translateX(6px) scale(1.01);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .option-btn.selected {
+            background: rgba(77,150,255,0.14);
+            border-color: var(--accent-4);
+            box-shadow: 0 0 25px rgba(77,150,255,0.18);
+            transform: translateX(6px) scale(1.01);
+        }
+
+        .option-btn.correct-answer {
+            background: rgba(34,197,94,0.14) !important;
+            border-color: var(--correct-color) !important;
+            box-shadow: 0 0 25px rgba(34,197,94,0.2) !important;
+            transform: scale(1.02) !important;
+        }
+
+        .option-btn.wrong-answer {
+            background: rgba(239,68,68,0.14) !important;
+            border-color: var(--incorrect-color) !important;
+            box-shadow: 0 0 25px rgba(239,68,68,0.2) !important;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            15% { transform: translateX(-8px); }
+            30% { transform: translateX(8px); }
+            45% { transform: translateX(-6px); }
+            60% { transform: translateX(6px); }
+            75% { transform: translateX(-3px); }
+            90% { transform: translateX(3px); }
+        }
+
+        .option-btn.disabled { pointer-events: none; opacity: 0.6; }
+
+        .option-letter {
+            width: 40px; height: 40px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.9rem;
+            background: var(--option-letter-bg); color: var(--option-letter-text);
+            flex-shrink: 0; transition: var(--transition-smooth);
+        }
+        .option-btn.selected .option-letter { background: var(--accent-4); color: #fff; }
+        .option-btn.correct-answer .option-letter { background: var(--correct-color) !important; color: #fff !important; }
+        .option-btn.wrong-answer .option-letter { background: var(--incorrect-color) !important; color: #fff !important; }
+
+        .option-text { font-weight: 700; font-size: 1.05rem; color: var(--text-primary); }
+
+        /* ========== TRUE/FALSE ========== */
+        .tf-grid { display: flex; gap: 16px; }
+
+        .tf-btn {
+            flex: 1; padding: 24px; border-radius: 20px;
+            border: 2px solid var(--tf-btn-border);
+            background: var(--tf-btn-bg);
+            cursor: pointer; transition: var(--transition-smooth);
+            text-align: center; font-weight: 700; font-size: 1.1rem;
+            color: var(--text-primary); font-family: 'Nunito', sans-serif;
+            transform-style: preserve-3d;
+            box-shadow: 0 6px 20px var(--glass-shadow);
+        }
+        .tf-btn .tf-icon { display: block; font-size: 2.5rem; margin-bottom: 8px; }
+
+        .tf-btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: var(--card-hover-shadow);
+            border-color: var(--option-hover-border);
+            background: var(--tf-btn-hover-bg);
+        }
+
+        .tf-btn.selected {
+            border-color: var(--accent-4);
+            background: rgba(77,150,255,0.15);
+            box-shadow: 0 0 30px rgba(77,150,255,0.18);
+            transform: scale(1.04);
+        }
+
+        .tf-btn.correct-answer {
+            background: rgba(34,197,94,0.16) !important;
+            border-color: var(--correct-color) !important;
+            box-shadow: 0 0 25px rgba(34,197,94,0.2) !important;
+        }
+        .tf-btn.wrong-answer {
+            background: rgba(239,68,68,0.16) !important;
+            border-color: var(--incorrect-color) !important;
+            animation: shake 0.5s ease;
+        }
+        .tf-btn.disabled { pointer-events: none; opacity: 0.6; }
+
+        /* ========== TEXT INPUT ========== */
+        .text-inputs-area { display: flex; flex-direction: column; gap: 18px; }
+
+        .text-input-group {
+            display: flex; gap: 15px; align-items: center;
+        }
+
+        .text-input-wrapper {
+            flex: 1; position: relative;
+        }
+
+        .text-input-wrapper label {
+            position: absolute; top: -9px; left: 16px;
+            font-size: 0.7rem; font-weight: 800; color: var(--accent-5);
+            background: var(--input-label-bg);
+            padding: 0 8px; border-radius: 4px;
+            letter-spacing: 1px; text-transform: uppercase; z-index: 1;
+        }
+
+        .text-input {
+            width: 100%; padding: 18px 22px;
+            background: var(--input-bg);
+            border: 2px solid var(--input-border);
+            border-radius: 16px; color: var(--text-primary);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.05rem; font-weight: 600;
+            transition: var(--transition-smooth); outline: none;
+            box-shadow: inset 0 2px 4px var(--glass-shadow);
+        }
+        .text-input::placeholder { color: var(--input-placeholder); font-weight: 500; }
+        .text-input:focus {
+            border-color: var(--accent-5);
+            background: var(--input-bg);
+            box-shadow: 0 0 25px rgba(192,132,252,0.18);
+        }
+        .text-input.correct-answer {
+            border-color: var(--correct-color) !important;
+            background: rgba(34,197,94,0.08) !important;
+        }
+        .text-input.wrong-answer {
+            border-color: var(--incorrect-color) !important;
+            background: rgba(239,68,68,0.08) !important;
+        }
+        .text-input:read-only { opacity: 0.7; }
+
+        .input-sep {
+            font-size: 1.3rem; color: var(--text-secondary);
+            font-weight: 800; flex-shrink: 0;
+        }
+
+        /* ========== FEEDBACK ========== */
+        .feedback-area {
+            margin-top: 24px; min-height: 52px;
+        }
+
+        .feedback-msg {
+            padding: 14px 22px; border-radius: 16px;
+            font-size: 0.95rem; font-weight: 700;
+            display: flex; align-items: center; gap: 10px;
+            animation: feedbackPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes feedbackPop {
+            0% { opacity: 0; transform: scale(0.85) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .feedback-correct {
+            background: rgba(34,197,94,0.14);
+            color: var(--correct-color);
+            border: 1px solid rgba(34,197,94,0.25);
+        }
+        .feedback-incorrect {
+            background: rgba(239,68,68,0.14);
+            color: var(--incorrect-color);
+            border: 1px solid rgba(239,68,68,0.25);
+        }
+
+        .attempts-tag {
+            margin-top: 10px; font-size: 0.8rem;
+            color: var(--text-secondary); font-weight: 600;
+            text-align: right;
+        }
+
+        /* ========== ACTION BUTTONS ========== */
+        .action-row {
+            display: flex; gap: 14px; margin-top: 30px;
+            justify-content: flex-end; flex-wrap: wrap;
+        }
+
+        .btn-3d {
+            position: relative; padding: 16px 40px;
+            border: none; border-radius: 18px;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.1rem; font-weight: 700;
+            cursor: pointer; transition: var(--transition-smooth);
+            transform-style: preserve-3d; letter-spacing: 0.5px;
+            overflow: hidden; color: #fff;
+        }
+        .btn-3d::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 200%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.6s ease;
+        }
+        .btn-3d:hover::before { left: 100%; }
+
+        .btn-check {
+            background: linear-gradient(135deg, #4d96ff, #357abd);
+            box-shadow: 0 6px 0 #2a5f9e, 0 12px 30px rgba(77,150,255,0.25);
+        }
+        .btn-check:hover { transform: translateY(-3px); box-shadow: 0 9px 0 #2a5f9e, 0 18px 40px rgba(77,150,255,0.35); }
+        .btn-check:active { transform: translateY(3px); box-shadow: 0 3px 0 #2a5f9e, 0 6px 15px rgba(77,150,255,0.2); }
+
+        .btn-next {
+            background: linear-gradient(135deg, #6bcb77, #38ada9);
+            box-shadow: 0 6px 0 #2d8f6f, 0 12px 30px rgba(107,203,119,0.25);
+        }
+        .btn-next:hover { transform: translateY(-3px); box-shadow: 0 9px 0 #2d8f6f, 0 18px 40px rgba(107,203,119,0.35); }
+        .btn-next:active { transform: translateY(3px); box-shadow: 0 3px 0 #2d8f6f, 0 6px 15px rgba(107,203,119,0.2); }
+
+        .btn-retry {
+            background: linear-gradient(135deg, #ffd93d, #f0932b);
+            box-shadow: 0 6px 0 #c77b22, 0 12px 30px rgba(255,217,61,0.25);
+            color: #1a1a2e;
+        }
+        .btn-retry:hover { transform: translateY(-3px); box-shadow: 0 9px 0 #c77b22, 0 18px 40px rgba(255,217,61,0.35); }
+        .btn-retry:active { transform: translateY(3px); box-shadow: 0 3px 0 #c77b22, 0 6px 15px rgba(255,217,61,0.2); }
+
+        .btn-3d:disabled { opacity: 0.4; pointer-events: none; }
+        .btn-hidden { display: none !important; }
+
+        /* ========== SECTION COMPLETE VIEW ========== */
+        #complete-view { align-items: center; justify-content: center; flex: 1; text-align: center; }
+
+        .complete-card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 30px; padding: 50px 40px;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--card-hover-shadow);
+            max-width: 500px; width: 100%;
+            animation: modalPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative; overflow: hidden;
+        }
+        .complete-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(107,203,119,0.06), transparent, rgba(77,150,255,0.06), transparent);
+            animation: rotate 12s linear infinite;
+        }
+        @keyframes rotate { to { transform: rotate(360deg); } }
+        @keyframes modalPop {
+            0% { opacity: 0; transform: scale(0.7) rotateX(10deg); }
+            100% { opacity: 1; transform: scale(1) rotateX(0); }
+        }
+
+        .complete-content { position: relative; z-index: 1; }
+
+        .complete-emoji { font-size: 5rem; display: block; margin-bottom: 10px; animation: bounce 1.5s ease infinite; }
+        .complete-title {
+            font-family: 'Baloo 2', cursive; font-size: 2.2rem; font-weight: 800;
+            margin-bottom: 8px; color: var(--text-primary);
+        }
+        .complete-score {
+            font-family: 'Baloo 2', cursive; font-size: 3.5rem; font-weight: 800;
+            background: linear-gradient(135deg, #ffd93d, #ff6b6b);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; line-height: 1.2;
+        }
+        .complete-message {
+            font-size: 1rem; color: var(--text-secondary);
+            font-weight: 600; margin: 15px 0 30px;
+        }
+        .complete-bar-outer {
+            width: 100%; height: 10px;
+            background: var(--step-dot-bg);
+            border-radius: 10px; overflow: hidden; margin-bottom: 30px;
+        }
+        .complete-bar-inner {
+            height: 100%; border-radius: 10px; width: 0%;
+            transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .complete-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-home {
+            background: var(--btn-secondary-bg); color: var(--text-primary);
+            border: 1px solid var(--btn-secondary-border);
+            padding: 14px 30px; border-radius: 16px;
+            font-family: 'Nunito', sans-serif; font-size: 1rem;
+            font-weight: 700; cursor: pointer; transition: var(--transition-smooth);
+            box-shadow: 0 4px 14px var(--glass-shadow);
+        }
+        .btn-home:hover { background: var(--btn-secondary-hover-bg); transform: translateY(-2px); }
+
+        .btn-redo {
+            background: linear-gradient(135deg, #4d96ff, #6bcb77);
+            color: #fff; border: none;
+            padding: 14px 30px; border-radius: 16px;
+            font-family: 'Nunito', sans-serif; font-size: 1rem;
+            font-weight: 700; cursor: pointer; transition: var(--transition-smooth);
+            box-shadow: 0 8px 25px rgba(77,150,255,0.3);
+        }
+        .btn-redo:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(77,150,255,0.4); }
+
+        /* ========== CUSTOM SCROLLBAR ========== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-4); }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .app-header { padding: 10px 16px; margin-bottom: 20px; }
+            .brand-badge { font-size: 1.4rem; }
+            .brand-title { font-size: 1.1rem; }
+            .home-header h1 { font-size: 2.2rem; }
+            .home-emoji { font-size: 4rem; }
+            .section-card { padding: 22px 25px; border-radius: 20px; gap: 16px; }
+            .section-card .card-icon { width: 52px; height: 52px; font-size: 1.6rem; border-radius: 14px; }
+            .card-info h3 { font-size: 1.15rem; }
+            .question-card { padding: 30px 25px; border-radius: 22px; }
+            .question-text { font-size: 1.15rem; }
+            .option-btn { padding: 14px 18px; }
+            .tf-grid { gap: 12px; }
+            .tf-btn { padding: 18px; }
+            .tf-btn .tf-icon { font-size: 2rem; }
+            .action-row { justify-content: center; }
+            .btn-3d { padding: 14px 32px; font-size: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            html { font-size: 14px; }
+            .app-header { padding: 8px 12px; border-radius: 16px; }
+            .brand-badge { font-size: 1.3rem; }
+            .brand-title { font-size: 1rem; }
+            .brand-sub { display: none; }
+            .theme-toggle-btn { padding: 4px 10px 4px 6px; gap: 6px; }
+            .toggle-track { width: 46px; height: 24px; padding: 0 4px; }
+            .toggle-thumb { width: 18px; height: 18px; }
+            .theme-toggle-btn.is-light .toggle-thumb { transform: translateX(22px); }
+            .toggle-icon-bg { font-size: 0.72rem; }
+            .toggle-text { font-size: 0.78rem; min-width: 30px; }
+            .home-header h1 { font-size: 1.8rem; }
+            .home-emoji { font-size: 3.5rem; }
+            .home-stats { gap: 10px; }
+            .stat-pill { padding: 8px 14px; font-size: 0.8rem; }
+            .section-card { padding: 18px 20px; }
+            .section-card .card-icon { width: 46px; height: 46px; font-size: 1.4rem; }
+            .card-info h3 { font-size: 1.05rem; }
+            .question-card { padding: 24px 20px; }
+            .question-text { font-size: 1.05rem; margin-bottom: 22px; }
+            .tf-btn { padding: 14px; font-size: 0.95rem; }
+            .tf-btn .tf-icon { font-size: 1.8rem; margin-bottom: 4px; }
+            .text-input-group { flex-direction: column; }
+            .input-sep { display: none; }
+            .action-row { flex-direction: column; align-items: stretch; }
+            .btn-3d { width: 100%; text-align: center; }
+            .complete-card { padding: 35px 25px; }
+            .complete-score { font-size: 2.8rem; }
+        }
+
+        @media (min-width: 1200px) {
+            .container { max-width: 800px; }
+        }
+    </style>
 </head>
 <body>
-    <header class="topbar">
-        <a class="brand" href="#top" aria-label="Wild About Food home">
-            <span class="brand-mark" aria-hidden="true">✳</span>
-            <span>little explorers</span>
-        </a>
-        <span class="topbar-note"><span class="live-dot" aria-hidden="true"></span> ANIMAL SCIENCE · QUIZ 01</span>
-    </header>
 
-    <main id="top">
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="hero-copy">
-                <p class="eyebrow"><span aria-hidden="true">🌿</span> YOUR WILDLIFE CHALLENGE</p>
-                <h1 id="hero-title">Wild about<br><span>food!</span></h1>
-                <p class="hero-description">What’s on the menu in the animal kingdom? Explore how different creatures find and eat their food.</p>
-                <a class="start-button" href="#test">Let’s explore <span aria-hidden="true">↓</span></a>
-            </div>
-            <div class="hero-art" aria-label="A cheerful frog beside a lily pond">
-                <div class="sun-disc"></div>
-                <span class="sparkle sparkle-one" aria-hidden="true">✳</span>
-                <span class="sparkle sparkle-two" aria-hidden="true">✦</span>
-                <div class="orbit orbit-one"><span>🍃</span></div>
-                <div class="orbit orbit-two"><span>🪰</span></div>
-                <div class="lily lily-back"></div>
-                <div class="frog-platform"><span class="frog" aria-hidden="true">🐸</span></div>
-                <div class="lily lily-front"></div>
-                <span class="hero-caption">Meet Freddie<br>the frog</span>
-            </div>
-            <div class="hero-bottom" aria-hidden="true"><span>CURIOUS MINDS, HAPPY ANIMALS</span><span>SCROLL TO BEGIN ↓</span></div>
-        </section>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div>
+    </div>
+    <div class="particles" id="particles"></div>
+    <canvas id="confetti-canvas"></canvas>
 
-        <section class="test-shell" id="test" aria-labelledby="test-title">
-            <div class="test-heading">
-                <div>
-                    <p class="eyebrow">READY, SET, DISCOVER</p>
-                    <h2 id="test-title">The animal food test</h2>
-                </div>
-                <div class="progress-wrap">
-                    <div class="progress-label"><span>Your progress</span><span id="progress-text">0 of 20 answered</span></div>
-                    <div class="progress-track" id="progress-track" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0">
-                        <span class="progress-fill" id="progress-fill"></span>
-                    </div>
+    <div class="container">
+
+        <!-- ===== APP HEADER & THEME TOGGLE ===== -->
+        <header class="app-header">
+            <div class="header-brand" onclick="goHome()" role="button" tabindex="0" title="Return to quiz menu">
+                <span class="brand-badge">🦁</span>
+                <div class="brand-text">
+                    <span class="brand-title">Animal Quiz</span>
+                    <span class="brand-sub">Science Challenge</span>
                 </div>
             </div>
-
-            <form id="quiz-form" novalidate>
-                <section class="quiz-section section-one" aria-labelledby="section-one-title">
-                    <div class="section-heading">
-                        <span class="section-number">01</span>
-                        <div><h3 id="section-one-title">Pick the right answer</h3><p>Choose one answer for each question.</p></div>
-                        <span class="section-emoji" aria-hidden="true">🔎</span>
+            <div class="header-actions">
+                <button class="theme-toggle-btn" id="theme-toggle" role="switch" aria-checked="false" aria-label="Toggle light or dark theme" title="Switch Theme (Light / Dark)">
+                    <div class="toggle-track">
+                        <span class="toggle-icon-bg sun-bg" aria-hidden="true">☀️</span>
+                        <span class="toggle-icon-bg moon-bg" aria-hidden="true">🌙</span>
+                        <div class="toggle-thumb" id="toggle-thumb">
+                            <span class="thumb-icon" id="thumb-icon" aria-hidden="true">🌙</span>
+                        </div>
                     </div>
+                    <span class="toggle-text" id="toggle-text">Dark</span>
+                </button>
+            </div>
+        </header>
 
-                    <fieldset class="question" data-question="q1">
-                        <legend><span class="question-number">1</span>A _____ has a long sticky tongue.</legend>
-                        <div class="options">
-                            <label class="option"><input type="radio" name="q1" value="snake"><span class="option-letter">A</span><span>snake</span></label>
-                            <label class="option"><input type="radio" name="q1" value="rat"><span class="option-letter">B</span><span>rat</span></label>
-                            <label class="option"><input type="radio" name="q1" value="frog"><span class="option-letter">C</span><span>frog</span></label>
-                            <label class="option"><input type="radio" name="q1" value="butterfly"><span class="option-letter">D</span><span>butterfly</span></label>
-                        </div>
-                        <p class="question-feedback" aria-live="polite"></p>
-                    </fieldset>
-
-                    <fieldset class="question" data-question="q2">
-                        <legend><span class="question-number">2</span>A butterfly _____ nectar.</legend>
-                        <div class="options">
-                            <label class="option"><input type="radio" name="q2" value="swallows"><span class="option-letter">A</span><span>swallows</span></label>
-                            <label class="option"><input type="radio" name="q2" value="chews"><span class="option-letter">B</span><span>chews</span></label>
-                            <label class="option"><input type="radio" name="q2" value="sucks"><span class="option-letter">C</span><span>sucks</span></label>
-                            <label class="option"><input type="radio" name="q2" value="drinks"><span class="option-letter">D</span><span>drinks</span></label>
-                        </div>
-                        <p class="question-feedback" aria-live="polite"></p>
-                    </fieldset>
-
-                    <fieldset class="question" data-question="q3">
-                        <legend><span class="question-number">3</span>A _____ does not hunt other animals for food.</legend>
-                        <div class="options">
-                            <label class="option"><input type="radio" name="q3" value="tiger"><span class="option-letter">A</span><span>tiger</span></label>
-                            <label class="option"><input type="radio" name="q3" value="bear"><span class="option-letter">B</span><span>bear</span></label>
-                            <label class="option"><input type="radio" name="q3" value="fox"><span class="option-letter">C</span><span>fox</span></label>
-                            <label class="option"><input type="radio" name="q3" value="zebra"><span class="option-letter">D</span><span>zebra</span></label>
-                        </div>
-                        <p class="question-feedback" aria-live="polite"></p>
-                    </fieldset>
-
-                    <fieldset class="question" data-question="q4">
-                        <legend><span class="question-number">4</span>A _____ laps liquid with its long tongue.</legend>
-                        <div class="options">
-                            <label class="option"><input type="radio" name="q4" value="dog"><span class="option-letter">A</span><span>dog</span></label>
-                            <label class="option"><input type="radio" name="q4" value="owl"><span class="option-letter">B</span><span>owl</span></label>
-                            <label class="option"><input type="radio" name="q4" value="elephant"><span class="option-letter">C</span><span>elephant</span></label>
-                            <label class="option"><input type="radio" name="q4" value="camel"><span class="option-letter">D</span><span>camel</span></label>
-                        </div>
-                        <p class="question-feedback" aria-live="polite"></p>
-                    </fieldset>
-
-                    <fieldset class="question" data-question="q5">
-                        <legend><span class="question-number">5</span>A _____ sucks blood.</legend>
-                        <div class="options">
-                            <label class="option"><input type="radio" name="q5" value="snake"><span class="option-letter">A</span><span>snake</span></label>
-                            <label class="option"><input type="radio" name="q5" value="frog"><span class="option-letter">B</span><span>frog</span></label>
-                            <label class="option"><input type="radio" name="q5" value="leech"><span class="option-letter">C</span><span>leech</span></label>
-                            <label class="option"><input type="radio" name="q5" value="spider"><span class="option-letter">D</span><span>spider</span></label>
-                        </div>
-                        <p class="question-feedback" aria-live="polite"></p>
-                    </fieldset>
-                </section>
-
-                <section class="quiz-section section-two" aria-labelledby="section-two-title">
-                    <div class="section-heading">
-                        <span class="section-number">02</span>
-                        <div><h3 id="section-two-title">True or false?</h3><p>Tap the answer you think is right.</p></div>
-                        <span class="section-emoji" aria-hidden="true">💡</span>
-                    </div>
-
-                    <fieldset class="question" data-question="q6">
-                        <legend><span class="question-number">1</span>Animals can prepare their own food.</legend>
-                        <div class="boolean-options">
-                            <label class="option"><input type="radio" name="q6" value="true"><span>True</span></label>
-                            <label class="option"><input type="radio" name="q6" value="false"><span>False</span></label>
-                        </div>
-                        <p class="question-feedback" aria-live="polite"></p>
-                    </fieldset>
-                    <fieldset class="question" data-question="q7">
-                        <legend><span class="question-number">2</span>All animals eat only plants.</legend>
-                        <div class="boolean-options">
-                            <label class="option"><input type="radio" name="q7" value="true"><span>True</span></label>
-                            <label class="option"><input type="radio" name="q7" value="false"><span>False</span></label>
-                        </div>
-                        <p class="question-feedback" aria-live="polite"></p>
-                    </fieldset>
-                    <fieldset class="question" data-question="q8">
-                        <legend><span class="question-number">3</span>Snakes chew their prey.</legend>
-                        <div class="boolean-options">
-                            <label class="option"><input type="radio" name="q8" value="true"><span>True</span></label>
-                            <label class="option"><input type="radio" name="q8" value="false"><span>False</span></label>
-                        </div>
-                        <p class="question-feedback" aria-live="polite"></p>
-                    </fieldset>
-                    <fieldset class="question" data-question="q9">
-                        <legend><span class="question-number">4</span>Mosquitoes suck the blood from our body.</legend>
-                        <div class="boolean-options">
-                            <label class="option"><input type="radio" name="q9" value="true"><span>True</span></label>
-                            <label class="option"><input type="radio" name="q9" value="false"><span>False</span></label>
-                        </div>
-                        <p class="question-feedback" aria-live="polite"></p>
-                    </fieldset>
-                    <fieldset class="question" data-question="q10">
-                        <legend><span class="question-number">5</span>Herbivores are eaten by carnivores.</legend>
-                        <div class="boolean-options">
-                            <label class="option"><input type="radio" name="q10" value="true"><span>True</span></label>
-                            <label class="option"><input type="radio" name="q10" value="false"><span>False</span></label>
-                        </div>
-                        <p class="question-feedback" aria-live="polite"></p>
-                    </fieldset>
-                </section>
-
-                <section class="quiz-section section-three" aria-labelledby="section-three-title">
-                    <div class="section-heading">
-                        <span class="section-number">03</span>
-                        <div><h3 id="section-three-title">Name two animals</h3><p>Write one animal in each box.</p></div>
-                        <span class="section-emoji" aria-hidden="true">✏️</span>
-                    </div>
-
-                    <div class="written-question" data-question="q11">
-                        <p><span class="question-number">1</span>Plant-eating animals</p>
-                        <label class="answer-field"><span class="sr-only">First plant-eating animal</span><input type="text" name="q11a" autocomplete="off" placeholder="Animal one" data-accepted="cow|goat|sheep|deer|elephant|giraffe|zebra|horse|rabbit|camel|buffalo|bison|hippopotamus|rhino|rhinoceros|donkey|panda|koala|deer|moose|antelope|sheep|cattle"></label>
-                        <label class="answer-field"><span class="sr-only">Second plant-eating animal</span><input type="text" name="q11b" autocomplete="off" placeholder="Animal two" data-accepted="cow|goat|sheep|deer|elephant|giraffe|zebra|horse|rabbit|camel|buffalo|bison|hippopotamus|rhino|rhinoceros|donkey|panda|koala|moose|antelope|cattle"></label>
-                        <p class="written-feedback" aria-live="polite"></p>
-                    </div>
-                    <div class="written-question" data-question="q12">
-                        <p><span class="question-number">2</span>Flesh-eating animals</p>
-                        <label class="answer-field"><span class="sr-only">First flesh-eating animal</span><input type="text" name="q12a" autocomplete="off" placeholder="Animal one" data-accepted="lion|tiger|leopard|cheetah|wolf|fox|eagle|hawk|owl|snake|crocodile|alligator|shark|polar bear|bear|hyena|lynx|cougar|panther|jaguar|wildcat"></label>
-                        <label class="answer-field"><span class="sr-only">Second flesh-eating animal</span><input type="text" name="q12b" autocomplete="off" placeholder="Animal two" data-accepted="lion|tiger|leopard|cheetah|wolf|fox|eagle|hawk|owl|snake|crocodile|alligator|shark|polar bear|bear|hyena|lynx|cougar|panther|jaguar|wildcat"></label>
-                        <p class="written-feedback" aria-live="polite"></p>
-                    </div>
-                    <div class="written-question" data-question="q13">
-                        <p><span class="question-number">3</span>Animals that swallow their food</p>
-                        <label class="answer-field"><span class="sr-only">First animal that swallows its food</span><input type="text" name="q13a" autocomplete="off" placeholder="Animal one" data-accepted="snake|frog|toad|lizard|gecko|chameleon|crocodile|alligator|pelican|heron|stork|kingfisher|whale|dolphin|shark"></label>
-                        <label class="answer-field"><span class="sr-only">Second animal that swallows its food</span><input type="text" name="q13b" autocomplete="off" placeholder="Animal two" data-accepted="snake|frog|toad|lizard|gecko|chameleon|crocodile|alligator|pelican|heron|stork|kingfisher|whale|dolphin|shark"></label>
-                        <p class="written-feedback" aria-live="polite"></p>
-                    </div>
-                    <div class="written-question" data-question="q14">
-                        <p><span class="question-number">4</span>Animals that gnaw their food</p>
-                        <label class="answer-field"><span class="sr-only">First animal that gnaws its food</span><input type="text" name="q14a" autocomplete="off" placeholder="Animal one" data-accepted="rat|mouse|rabbit|squirrel|beaver|hamster|guinea pig|chipmunk|porcupine|capybara|prairie dog|vole|marmot|gerbil"></label>
-                        <label class="answer-field"><span class="sr-only">Second animal that gnaws its food</span><input type="text" name="q14b" autocomplete="off" placeholder="Animal two" data-accepted="rat|mouse|rabbit|squirrel|beaver|hamster|guinea pig|chipmunk|porcupine|capybara|prairie dog|vole|marmot|gerbil"></label>
-                        <p class="written-feedback" aria-live="polite"></p>
-                    </div>
-                    <div class="written-question" data-question="q15">
-                        <p><span class="question-number">5</span>Animals that eat flesh from dead animals</p>
-                        <label class="answer-field"><span class="sr-only">First animal that eats flesh from dead animals</span><input type="text" name="q15a" autocomplete="off" placeholder="Animal one" data-accepted="vulture|hyena|jackal|crow|raven|condor|buzzard|kestrel|coyote|wolf|eagle|marabou stork|warthog"></label>
-                        <label class="answer-field"><span class="sr-only">Second animal that eats flesh from dead animals</span><input type="text" name="q15b" autocomplete="off" placeholder="Animal two" data-accepted="vulture|hyena|jackal|crow|raven|condor|buzzard|kestrel|coyote|wolf|eagle|marabou stork|warthog"></label>
-                        <p class="written-feedback" aria-live="polite"></p>
-                    </div>
-                </section>
-
-                <div class="submit-area">
-                    <p>Take your best guess. You can always try again!</p>
-                    <button class="submit-button" type="submit"><span>Check my answers</span><span aria-hidden="true">✦</span></button>
-                    <button class="reset-button" type="reset"><span aria-hidden="true">↻</span> Start over</button>
+        <!-- ===== HOME VIEW ===== -->
+        <div class="view active" id="home-view">
+            <div class="home-header">
+                <span class="home-emoji">🦁</span>
+                <h1>Animals & Their Food</h1>
+                <p class="subtitle">Science Quiz Challenge</p>
+                <div class="home-stats">
+                    <div class="stat-pill"><span class="icon">📝</span> 15 Questions</div>
+                    <div class="stat-pill"><span class="icon">🎯</span> 3 Sections</div>
+                    <div class="stat-pill"><span class="icon">⭐</span> 15 Points</div>
                 </div>
-            </form>
+            </div>
 
-            <section class="results" id="results" aria-live="polite" aria-atomic="true" hidden>
-                <span class="results-star" aria-hidden="true">✦</span>
-                <div><p class="eyebrow" id="results-kicker">TEST COMPLETE</p><h2 id="results-title">Your score</h2><p id="results-message"></p></div>
-                <div class="score-bubble"><span id="score-value">0</span><span>/ 20</span></div>
-            </section>
-        </section>
-    </main>
-    <footer><span>KEEP EXPLORING <span aria-hidden="true">✳</span></span><span>There’s always more to discover.</span></footer>
+            <div class="sections-grid">
+                <div class="section-card" data-section="1" onclick="startSection(1)">
+                    <div class="card-icon">📝</div>
+                    <div class="card-info">
+                        <h3>Choose the Correct Option</h3>
+                        <p>Fill in the blanks — 5 questions</p>
+                    </div>
+                    <span class="card-arrow">→</span>
+                    <span class="card-badge badge-pending" id="badge-1">Start</span>
+                </div>
+
+                <div class="section-card" data-section="2" onclick="startSection(2)">
+                    <div class="card-icon">✅</div>
+                    <div class="card-info">
+                        <h3>True or False</h3>
+                        <p>Select the correct answer — 5 questions</p>
+                    </div>
+                    <span class="card-arrow">→</span>
+                    <span class="card-badge badge-pending" id="badge-2">Start</span>
+                </div>
+
+                <div class="section-card" data-section="3" onclick="startSection(3)">
+                    <div class="card-icon">✍️</div>
+                    <div class="card-info">
+                        <h3>Give Two Examples</h3>
+                        <p>Type your answers — 5 questions</p>
+                    </div>
+                    <span class="card-arrow">→</span>
+                    <span class="card-badge badge-pending" id="badge-3">Start</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== QUIZ VIEW ===== -->
+        <div class="view" id="quiz-view">
+            <div class="quiz-topbar">
+                <button class="back-btn" onclick="goHome()">
+                    <span class="arrow">←</span> Back
+                </button>
+                <div class="question-counter" id="q-counter">
+                    Question <span id="q-num">1</span> / <span id="q-total">5</span>
+                </div>
+            </div>
+            <div class="step-progress" id="step-progress"></div>
+            <div class="question-stage" id="question-stage"></div>
+        </div>
+
+        <!-- ===== SECTION COMPLETE VIEW ===== -->
+        <div class="view" id="complete-view">
+            <div class="complete-card">
+                <div class="complete-content">
+                    <span class="complete-emoji" id="comp-emoji">🎉</span>
+                    <div class="complete-title" id="comp-title">Section Complete!</div>
+                    <div class="complete-score" id="comp-score">5/5</div>
+                    <div class="complete-bar-outer">
+                        <div class="complete-bar-inner" id="comp-bar"></div>
+                    </div>
+                    <p class="complete-message" id="comp-msg">Great work!</p>
+                    <div class="complete-buttons">
+                        <button class="btn-home" onclick="goHome()">🏠 Main Menu</button>
+                        <button class="btn-redo" onclick="redoSection()">🔄 Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    // ==========================================
+    //   DATA & STATE
+    // ==========================================
+    const sections = {
+        1: {
+            title: 'Fill in the Blanks',
+            type: 'mcq',
+            questions: [
+                {
+                    text: 'A <span class="blank"></span> has a long sticky tongue.',
+                    options: [
+                        { letter: 'A', text: 'Snake', value: 'a' },
+                        { letter: 'B', text: 'Rat', value: 'b' },
+                        { letter: 'C', text: 'Frog', value: 'c' },
+                        { letter: 'D', text: 'Butterfly', value: 'd' }
+                    ],
+                    correct: 'c',
+                    feedback: { correct: 'Frogs catch insects with their long sticky tongue! 🐸', incorrect: 'Not quite! Frogs have a long sticky tongue to catch insects.' }
+                },
+                {
+                    text: 'A butterfly <span class="blank"></span> nectar.',
+                    options: [
+                        { letter: 'A', text: 'Swallows', value: 'a' },
+                        { letter: 'B', text: 'Chews', value: 'b' },
+                        { letter: 'C', text: 'Sucks', value: 'c' },
+                        { letter: 'D', text: 'Drinks', value: 'd' }
+                    ],
+                    correct: 'c',
+                    feedback: { correct: 'Butterflies suck nectar using their proboscis! 🦋', incorrect: 'Not right! Butterflies suck nectar through their proboscis.' }
+                },
+                {
+                    text: 'A <span class="blank"></span> does not hunt other animals for food.',
+                    options: [
+                        { letter: 'A', text: 'Tiger', value: 'a' },
+                        { letter: 'B', text: 'Bear', value: 'b' },
+                        { letter: 'C', text: 'Fox', value: 'c' },
+                        { letter: 'D', text: 'Zebra', value: 'd' }
+                    ],
+                    correct: 'd',
+                    feedback: { correct: 'Zebras are herbivores — they eat only plants! 🦓', incorrect: 'Think again! Zebras don\'t hunt — they\'re plant eaters.' }
+                },
+                {
+                    text: 'A <span class="blank"></span> laps liquid with its long tongue.',
+                    options: [
+                        { letter: 'A', text: 'Dog', value: 'a' },
+                        { letter: 'B', text: 'Owl', value: 'b' },
+                        { letter: 'C', text: 'Elephant', value: 'c' },
+                        { letter: 'D', text: 'Camel', value: 'd' }
+                    ],
+                    correct: 'a',
+                    feedback: { correct: 'Dogs lap water with their tongue! 🐕', incorrect: 'Not correct! Dogs lap liquid with their tongue.' }
+                },
+                {
+                    text: 'A <span class="blank"></span> sucks blood.',
+                    options: [
+                        { letter: 'A', text: 'Snake', value: 'a' },
+                        { letter: 'B', text: 'Frog', value: 'b' },
+                        { letter: 'C', text: 'Leech', value: 'c' },
+                        { letter: 'D', text: 'Spider', value: 'd' }
+                    ],
+                    correct: 'c',
+                    feedback: { correct: 'Leeches are blood-sucking animals! 🩸', incorrect: 'Try again! Leeches suck blood from other animals.' }
+                }
+            ]
+        },
+        2: {
+            title: 'True or False',
+            type: 'tf',
+            questions: [
+                { text: 'Animals can prepare their own food.', correct: 'false', feedback: { correct: 'Animals cannot make their own food — only plants can! 🌿', incorrect: 'Think again! Animals depend on other organisms for food.' } },
+                { text: 'All animals eat only plants.', correct: 'false', feedback: { correct: 'Not all animals eat plants — some are carnivores! 🥩', incorrect: 'Consider carnivores! Not all animals eat only plants.' } },
+                { text: 'Snakes chew their prey.', correct: 'false', feedback: { correct: 'Snakes swallow their prey whole! 🐍', incorrect: 'Snakes don\'t chew — they swallow prey whole!' } },
+                { text: 'Mosquitoes suck the blood from our body.', correct: 'true', feedback: { correct: 'Mosquitoes do suck blood from our body! 🦟', incorrect: 'Actually, mosquitoes do suck blood!' } },
+                { text: 'Herbivores are eaten by carnivores.', correct: 'true', feedback: { correct: 'Herbivores are part of the food chain eaten by carnivores! 🔗', incorrect: 'In the food chain, carnivores do eat herbivores!' } }
+            ]
+        },
+        3: {
+            title: 'Give Two Examples',
+            type: 'text',
+            questions: [
+                { text: '🌿 Plant-eating animals (Herbivores)', valid: ['cow', 'goat', 'deer', 'rabbit', 'horse', 'elephant', 'sheep', 'giraffe', 'zebra', 'buffalo', 'donkey', 'camel', 'panda', 'koala', 'hippo', 'rhinoceros', 'antelope'] },
+                { text: '🥩 Flesh-eating animals (Carnivores)', valid: ['lion', 'tiger', 'wolf', 'fox', 'leopard', 'cheetah', 'jaguar', 'eagle', 'hawk', 'shark', 'crocodile', 'snake', 'owl', 'panther', 'bear'] },
+                { text: '😮 Animals that swallow their food', valid: ['snake', 'frog', 'fish', 'crocodile', 'pelican', 'whale', 'lizard', 'alligator', 'penguin', 'toad'] },
+                { text: '🐹 Animals that gnaw their food', valid: ['rat', 'squirrel', 'rabbit', 'mouse', 'hamster', 'beaver', 'guinea pig', 'chipmunk', 'porcupine'] },
+                { text: '🦅 Animals that eat the flesh of dead animals (Scavengers)', valid: ['vulture', 'hyena', 'jackal', 'crow', 'eagle', 'kite', 'hawk', 'coyote', 'raccoon'] }
+            ]
+        }
+    };
+
+    // State
+    let currentSection = null;
+    let currentQuestion = 0;
+    let selectedAnswer = null;
+    let checked = false;
+    let isCorrect = false;
+    let attempts = 0;
+    const sectionScores = { 1: null, 2: null, 3: null };
+    const sectionAttempts = { 1: [], 2: [], 3: [] };
+
+    // ==========================================
+    //   PARTICLES
+    // ==========================================
+    function createParticles() {
+        const c = document.getElementById('particles');
+        const emojis = ['🐾','🌿','🦋','🐸','🐍','🦁','🐰','🐕','🦅','🌻','🐛','🐠','⭐','🍃','🐝'];
+        for (let i = 0; i < 18; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDuration = (14 + Math.random() * 18) + 's';
+            p.style.animationDelay = -(Math.random() * 20) + 's';
+            p.style.fontSize = (1 + Math.random() * 1.2) + 'rem';
+            c.appendChild(p);
+        }
+    }
+
+    // ==========================================
+    //   VIEW MANAGEMENT
+    // ==========================================
+    function showView(id) {
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        const view = document.getElementById(id);
+        view.classList.remove('active');
+        // Force reflow for animation
+        void view.offsetWidth;
+        view.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goHome() {
+        updateBadges();
+        showView('home-view');
+        currentSection = null;
+    }
+
+    function updateBadges() {
+        for (let s = 1; s <= 3; s++) {
+            const badge = document.getElementById(`badge-${s}`);
+            if (sectionScores[s] !== null) {
+                badge.textContent = `✅ ${sectionScores[s]}/5`;
+                badge.className = 'card-badge badge-complete';
+            } else {
+                badge.textContent = 'Start';
+                badge.className = 'card-badge badge-pending';
+            }
+        }
+    }
+
+    // ==========================================
+    //   START SECTION
+    // ==========================================
+    function startSection(sectionNum) {
+        currentSection = sectionNum;
+        currentQuestion = 0;
+        sectionAttempts[sectionNum] = [];
+        sectionScores[sectionNum] = null;
+
+        const sec = sections[sectionNum];
+        document.getElementById('q-total').textContent = sec.questions.length;
+
+        // Build step dots
+        const stepBar = document.getElementById('step-progress');
+        stepBar.innerHTML = '';
+        for (let i = 0; i < sec.questions.length; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'step-dot' + (i === 0 ? ' current' : '');
+            dot.id = `step-${i}`;
+            stepBar.appendChild(dot);
+        }
+
+        showView('quiz-view');
+        renderQuestion();
+    }
+
+    // ==========================================
+    //   RENDER QUESTION
+    // ==========================================
+    function renderQuestion() {
+        selectedAnswer = null;
+        checked = false;
+        isCorrect = false;
+        attempts = 0;
+
+        const sec = sections[currentSection];
+        const q = sec.questions[currentQuestion];
+        const stage = document.getElementById('question-stage');
+
+        document.getElementById('q-num').textContent = currentQuestion + 1;
+
+        // Update step dots
+        for (let i = 0; i < sec.questions.length; i++) {
+            const dot = document.getElementById(`step-${i}`);
+            dot.className = 'step-dot';
+            if (i < currentQuestion) dot.classList.add('completed');
+            else if (i === currentQuestion) dot.classList.add('current');
+        }
+
+        const badgeClass = `sec-${currentSection}-badge`;
+        let html = `<div class="question-card card-enter">`;
+        html += `<div class="question-number-badge ${badgeClass}">📌 Question ${currentQuestion + 1}</div>`;
+        html += `<p class="question-text">${q.text}</p>`;
+
+        if (sec.type === 'mcq') {
+            html += `<div class="options-list">`;
+            q.options.forEach(opt => {
+                html += `<button type="button" class="option-btn" data-value="${opt.value}" onclick="pickOption(this, '${opt.value}')">
+                    <span class="option-letter">${opt.letter}</span>
+                    <span class="option-text">${opt.text}</span>
+                </button>`;
+            });
+            html += `</div>`;
+        } else if (sec.type === 'tf') {
+            html += `<div class="tf-grid">
+                <button type="button" class="tf-btn" data-value="true" onclick="pickTF(this, 'true')">
+                    <span class="tf-icon">✅</span> True
+                </button>
+                <button type="button" class="tf-btn" data-value="false" onclick="pickTF(this, 'false')">
+                    <span class="tf-icon">❌</span> False
+                </button>
+            </div>`;
+        } else if (sec.type === 'text') {
+            html += `<div class="text-inputs-area">
+                <div class="text-input-group">
+                    <div class="text-input-wrapper">
+                        <label>Example 1</label>
+                        <input type="text" class="text-input" id="inp-a" placeholder="Type an animal name..." oninput="onTextInput()">
+                    </div>
+                    <span class="input-sep">&</span>
+                    <div class="text-input-wrapper">
+                        <label>Example 2</label>
+                        <input type="text" class="text-input" id="inp-b" placeholder="Type another animal..." oninput="onTextInput()">
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        html += `<div class="feedback-area" id="feedback-area"></div>`;
+        html += `<div class="action-row">
+            <button class="btn-3d btn-retry btn-hidden" id="btn-retry" onclick="retryQuestion()">🔄 Try Again</button>
+            <button class="btn-3d btn-check" id="btn-check" onclick="checkAnswer()" disabled>✔️ Check Answer</button>
+            <button class="btn-3d btn-next btn-hidden" id="btn-next" onclick="nextQuestion()">Next →</button>
+        </div>`;
+        html += `</div>`;
+
+        stage.innerHTML = html;
+
+        // Auto-focus first text input
+        if (sec.type === 'text') {
+            setTimeout(() => {
+                const inp = document.getElementById('inp-a');
+                if (inp) inp.focus();
+            }, 400);
+        }
+    }
+
+    // ==========================================
+    //   PICK / SELECT
+    // ==========================================
+    function pickOption(btn, value) {
+        if (checked && isCorrect) return;
+        // If was wrong, allow re-pick
+        if (checked && !isCorrect) {
+            // reset visual state
+            resetOptionVisuals();
+            checked = false;
+            document.getElementById('feedback-area').innerHTML = '';
+            document.getElementById('btn-retry').classList.add('btn-hidden');
+            document.getElementById('btn-check').classList.remove('btn-hidden');
+        }
+
+        document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedAnswer = value;
+        document.getElementById('btn-check').disabled = false;
+
+        // Micro-animation
+        btn.style.transform = 'scale(0.96)';
+        setTimeout(() => { btn.style.transform = 'translateX(6px) scale(1.01)'; }, 100);
+        setTimeout(() => { btn.style.transform = ''; }, 300);
+    }
+
+    function pickTF(btn, value) {
+        if (checked && isCorrect) return;
+        if (checked && !isCorrect) {
+            resetOptionVisuals();
+            checked = false;
+            document.getElementById('feedback-area').innerHTML = '';
+            document.getElementById('btn-retry').classList.add('btn-hidden');
+            document.getElementById('btn-check').classList.remove('btn-hidden');
+        }
+
+        document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedAnswer = value;
+        document.getElementById('btn-check').disabled = false;
+
+        btn.style.transform = 'scale(0.95)';
+        setTimeout(() => { btn.style.transform = 'scale(1.04)'; }, 100);
+        setTimeout(() => { btn.style.transform = ''; }, 300);
+    }
+
+    function onTextInput() {
+        const a = document.getElementById('inp-a').value.trim();
+        const b = document.getElementById('inp-b').value.trim();
+        document.getElementById('btn-check').disabled = !(a && b);
+    }
+
+    function resetOptionVisuals() {
+        document.querySelectorAll('.option-btn').forEach(b => {
+            b.classList.remove('selected', 'correct-answer', 'wrong-answer', 'disabled');
+        });
+        document.querySelectorAll('.tf-btn').forEach(b => {
+            b.classList.remove('selected', 'correct-answer', 'wrong-answer', 'disabled');
+        });
+        document.querySelectorAll('.text-input').forEach(inp => {
+            inp.classList.remove('correct-answer', 'wrong-answer');
+            inp.readOnly = false;
+        });
+    }
+
+    // ==========================================
+    //   CHECK ANSWER
+    // ==========================================
+    function checkAnswer() {
+        const sec = sections[currentSection];
+        const q = sec.questions[currentQuestion];
+        checked = true;
+        attempts++;
+
+        const feedbackArea = document.getElementById('feedback-area');
+        const checkBtn = document.getElementById('btn-check');
+        const nextBtn = document.getElementById('btn-next');
+        const retryBtn = document.getElementById('btn-retry');
+
+        if (sec.type === 'mcq') {
+            isCorrect = selectedAnswer === q.correct;
+            const selectedBtn = document.querySelector(`.option-btn[data-value="${selectedAnswer}"]`);
+            const correctBtn = document.querySelector(`.option-btn[data-value="${q.correct}"]`);
+
+            if (isCorrect) {
+                selectedBtn.classList.add('correct-answer');
+                document.querySelectorAll('.option-btn').forEach(b => {
+                    if (b !== selectedBtn) b.classList.add('disabled');
+                });
+            } else {
+                selectedBtn.classList.add('wrong-answer');
+            }
+
+            feedbackArea.innerHTML = `<div class="feedback-msg ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
+                ${isCorrect ? '✅' : '❌'} ${isCorrect ? q.feedback.correct : q.feedback.incorrect}
+            </div>
+            <div class="attempts-tag">Attempt ${attempts}</div>`;
+
+        } else if (sec.type === 'tf') {
+            isCorrect = selectedAnswer === q.correct;
+            const selectedBtn = document.querySelector(`.tf-btn[data-value="${selectedAnswer}"]`);
+            const correctBtn = document.querySelector(`.tf-btn[data-value="${q.correct}"]`);
+
+            if (isCorrect) {
+                selectedBtn.classList.add('correct-answer');
+                document.querySelectorAll('.tf-btn').forEach(b => {
+                    if (b !== selectedBtn) b.classList.add('disabled');
+                });
+            } else {
+                selectedBtn.classList.add('wrong-answer');
+            }
+
+            feedbackArea.innerHTML = `<div class="feedback-msg ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
+                ${isCorrect ? '✅' : '❌'} ${isCorrect ? q.feedback.correct : q.feedback.incorrect}
+            </div>
+            <div class="attempts-tag">Attempt ${attempts}</div>`;
+
+        } else if (sec.type === 'text') {
+            const inpA = document.getElementById('inp-a');
+            const inpB = document.getElementById('inp-b');
+            const a = inpA.value.trim().toLowerCase();
+            const b = inpB.value.trim().toLowerCase();
+
+            const aValid = q.valid.includes(a);
+            const bValid = q.valid.includes(b);
+            const bothDiff = a !== b;
+
+            isCorrect = aValid && bValid && bothDiff;
+
+            if (isCorrect) {
+                inpA.classList.add('correct-answer');
+                inpB.classList.add('correct-answer');
+                inpA.readOnly = true;
+                inpB.readOnly = true;
+                feedbackArea.innerHTML = `<div class="feedback-msg feedback-correct">
+                    ✅ Excellent! Both answers are correct! 🎉
+                </div>
+                <div class="attempts-tag">Attempt ${attempts}</div>`;
+            } else {
+                let hint = '';
+                if (a === b) hint = 'Both examples must be different!';
+                else if (!aValid && !bValid) hint = 'Both answers need correction.';
+                else if (!aValid) hint = 'Example 1 is not correct.';
+                else if (!bValid) hint = 'Example 2 is not correct.';
+
+                if (!aValid) inpA.classList.add('wrong-answer');
+                else inpA.classList.add('correct-answer');
+                if (!bValid) inpB.classList.add('wrong-answer');
+                else inpB.classList.add('correct-answer');
+
+                feedbackArea.innerHTML = `<div class="feedback-msg feedback-incorrect">
+                    ❌ ${hint} Some valid examples: ${q.valid.slice(0, 4).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(', ')}
+                </div>
+                <div class="attempts-tag">Attempt ${attempts}</div>`;
+            }
+        }
+
+        if (isCorrect) {
+            checkBtn.classList.add('btn-hidden');
+            retryBtn.classList.add('btn-hidden');
+            nextBtn.classList.remove('btn-hidden');
+            sectionAttempts[currentSection].push(attempts);
+
+            // Small celebration
+            if (attempts === 1) miniCelebrate();
+        } else {
+            checkBtn.classList.add('btn-hidden');
+            retryBtn.classList.remove('btn-hidden');
+        }
+    }
+
+    // ==========================================
+    //   RETRY
+    // ==========================================
+    function retryQuestion() {
+        const sec = sections[currentSection];
+        checked = false;
+        isCorrect = false;
+        selectedAnswer = null;
+
+        resetOptionVisuals();
+        document.getElementById('feedback-area').innerHTML = '';
+        document.getElementById('btn-retry').classList.add('btn-hidden');
+        document.getElementById('btn-check').classList.remove('btn-hidden');
+        document.getElementById('btn-check').disabled = true;
+
+        if (sec.type === 'text') {
+            const inpA = document.getElementById('inp-a');
+            const inpB = document.getElementById('inp-b');
+            inpA.value = '';
+            inpB.value = '';
+            inpA.focus();
+        }
+    }
+
+    // ==========================================
+    //   NEXT QUESTION
+    // ==========================================
+    function nextQuestion() {
+        const sec = sections[currentSection];
+        const stage = document.getElementById('question-stage');
+        const card = stage.querySelector('.question-card');
+
+        // Exit animation
+        if (card) {
+            card.classList.remove('card-enter');
+            card.classList.add('card-exit');
+        }
+
+        setTimeout(() => {
+            currentQuestion++;
+            if (currentQuestion >= sec.questions.length) {
+                completeSection();
+            } else {
+                renderQuestion();
+            }
+        }, 350);
+    }
+
+    // ==========================================
+    //   SECTION COMPLETE
+    // ==========================================
+    function completeSection() {
+        const total = sections[currentSection].questions.length;
+        // Score = questions answered (all correct since you can't proceed without)
+        // But we track first-try scores: count attempts === 1
+        const firstTryCount = sectionAttempts[currentSection].filter(a => a === 1).length;
+        sectionScores[currentSection] = total; // all answered correctly
+
+        const percent = 100; // all correct
+        const firstPercent = Math.round((firstTryCount / total) * 100);
+
+        let emoji, title, msg;
+        if (firstPercent >= 80) {
+            emoji = '🏆'; title = 'Outstanding!';
+            msg = `You got ${firstTryCount} out of ${total} right on the first try! Amazing! 🌟`;
+        } else if (firstPercent >= 60) {
+            emoji = '🎉'; title = 'Great Job!';
+            msg = `${firstTryCount} out of ${total} correct on the first try! Keep it up! 💪`;
+        } else {
+            emoji = '💪'; title = 'Section Complete!';
+            msg = `${firstTryCount} out of ${total} correct on the first try. Practice makes perfect! 📚`;
+        }
+
+        document.getElementById('comp-emoji').textContent = emoji;
+        document.getElementById('comp-title').textContent = title;
+        document.getElementById('comp-score').textContent = `${total}/${total}`;
+        document.getElementById('comp-msg').textContent = msg;
+
+        const bar = document.getElementById('comp-bar');
+        bar.style.width = '0%';
+        bar.style.background = `linear-gradient(90deg, #4d96ff, #6bcb77)`;
+
+        showView('complete-view');
+        updateBadges();
+
+        setTimeout(() => { bar.style.width = '100%'; }, 400);
+
+        if (firstPercent >= 60) launchConfetti();
+    }
+
+    function redoSection() {
+        if (currentSection) {
+            startSection(currentSection);
+        } else {
+            goHome();
+        }
+    }
+
+    // ==========================================
+    //   MINI CELEBRATE (first-try correct)
+    // ==========================================
+    function miniCelebrate() {
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const colors = ['#22c55e', '#6bcb77', '#ffd93d', '#4d96ff'];
+
+        for (let i = 0; i < 30; i++) {
+            particles.push({
+                x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+                y: canvas.height / 2,
+                w: Math.random() * 8 + 4,
+                h: Math.random() * 6 + 3,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                rotation: Math.random() * 360,
+                rotSpeed: (Math.random() - 0.5) * 12,
+                vx: (Math.random() - 0.5) * 8,
+                vy: -(Math.random() * 6 + 3),
+                opacity: 1
+            });
+        }
+
+        let frame = 0;
+        function animate() {
+            if (frame > 60) { ctx.clearRect(0, 0, canvas.width, canvas.height); return; }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                p.rotation += p.rotSpeed; p.vy += 0.15;
+                if (frame > 35) p.opacity -= 0.04;
+
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, p.opacity);
+                ctx.translate(p.x, p.y);
+                ctx.rotate((p.rotation * Math.PI) / 180);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                ctx.restore();
+            });
+
+            frame++;
+            requestAnimationFrame(animate);
+        }
+        animate();
+    }
+
+    // ==========================================
+    //   FULL CONFETTI
+    // ==========================================
+    function launchConfetti() {
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const pieces = [];
+        const colors = ['#ff6b6b','#ffd93d','#6bcb77','#4d96ff','#c084fc','#ff9ff3','#54a0ff'];
+
+        for (let i = 0; i < 120; i++) {
+            pieces.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height - canvas.height,
+                w: Math.random() * 12 + 5,
+                h: Math.random() * 8 + 3,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                rotation: Math.random() * 360,
+                rotSpeed: (Math.random() - 0.5) * 10,
+                vx: (Math.random() - 0.5) * 4,
+                vy: Math.random() * 3 + 2,
+                opacity: 1
+            });
+        }
+
+        let frame = 0;
+        function animate() {
+            if (frame > 160) { ctx.clearRect(0, 0, canvas.width, canvas.height); return; }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            pieces.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                p.rotation += p.rotSpeed; p.vy += 0.05;
+                if (frame > 120) p.opacity -= 0.025;
+
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, p.opacity);
+                ctx.translate(p.x, p.y);
+                ctx.rotate((p.rotation * Math.PI) / 180);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                ctx.restore();
+            });
+
+            frame++;
+            requestAnimationFrame(animate);
+        }
+        animate();
+    }
+
+    // ==========================================
+    //   3D TILT ON SECTION CARDS
+    // ==========================================
+    function init3DTilt() {
+        document.querySelectorAll('.section-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const cx = rect.width / 2;
+                const cy = rect.height / 2;
+                const rx = ((y - cy) / cy) * -4;
+                const ry = ((x - cx) / cx) * 4;
+                card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    }
+
+    // ==========================================
+    //   THEME MANAGEMENT (LIGHT / DARK)
+    // ==========================================
+    function getPreferredTheme() {
+        try {
+            const saved = localStorage.getItem('quiz-theme');
+            if (saved === 'light' || saved === 'dark') return saved;
+        } catch (e) {}
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            return 'light';
+        }
+        return 'dark';
+    }
+
+    function applyTheme(theme, animate = false) {
+        if (animate) {
+            document.documentElement.classList.add('theme-transitioning');
+        }
+
+        document.documentElement.setAttribute('data-theme', theme);
+        const toggleBtn = document.getElementById('theme-toggle');
+        const label = document.getElementById('toggle-text');
+        const thumbIcon = document.getElementById('thumb-icon');
+
+        if (theme === 'light') {
+            if (toggleBtn) {
+                toggleBtn.setAttribute('aria-checked', 'true');
+                toggleBtn.classList.add('is-light');
+            }
+            if (label) label.textContent = 'Light';
+            if (thumbIcon) thumbIcon.textContent = '☀️';
+        } else {
+            if (toggleBtn) {
+                toggleBtn.setAttribute('aria-checked', 'false');
+                toggleBtn.classList.remove('is-light');
+            }
+            if (label) label.textContent = 'Dark';
+            if (thumbIcon) thumbIcon.textContent = '🌙';
+        }
+
+        try {
+            localStorage.setItem('quiz-theme', theme);
+        } catch (e) {}
+
+        if (animate) {
+            setTimeout(() => {
+                document.documentElement.classList.remove('theme-transitioning');
+            }, 380);
+        }
+    }
+
+    function toggleTheme() {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next, true);
+    }
+
+    // ==========================================
+    //   INIT
+    // ==========================================
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize Theme Toggle
+        const currentTheme = getPreferredTheme();
+        applyTheme(currentTheme, false);
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', toggleTheme);
+        }
+
+        // Keyboard Shortcut: Press 'T' to toggle theme (if not inside text input)
+        document.addEventListener('keydown', (e) => {
+            if ((e.key === 't' || e.key === 'T') && !['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+                toggleTheme();
+            }
+        });
+
+        // Accessible header brand return to menu
+        const headerBrand = document.querySelector('.header-brand');
+        if (headerBrand) {
+            headerBrand.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    goHome();
+                }
+            });
+        }
+
+        // System preference listener (when user has not overridden preference)
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+                try {
+                    if (!localStorage.getItem('quiz-theme')) {
+                        applyTheme(e.matches ? 'light' : 'dark', true);
+                    }
+                } catch (err) {}
+            });
+        }
+
+        createParticles();
+        init3DTilt();
+        window.addEventListener('resize', () => {
+            const canvas = document.getElementById('confetti-canvas');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    });
+    </script>
 </body>
 </html>

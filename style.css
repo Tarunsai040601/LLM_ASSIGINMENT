@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 }
 
-:root {
+:root, [data-theme="light"] {
 	color-scheme: light;
 	--ink: #17372f;
 	--muted: #64766d;
@@ -18,6 +18,24 @@
 	font-family: "DM Sans", "Trebuchet MS", sans-serif;
 	color: var(--ink);
 	background: #f2f7e9;
+}
+
+[data-theme="dark"] {
+	color-scheme: dark;
+	--ink: #e6f1ed;
+	--muted: #9bb0a6;
+	--green: #48a881;
+	--green-dark: #2d8260;
+	--leaf: #1d3326;
+	--coral: #ff8e6b;
+	--yellow: #f5ca61;
+	--paper: #13241e;
+	--line: #223d32;
+	--good: #38a169;
+	--bad: #e53e3e;
+	font-family: "DM Sans", "Trebuchet MS", sans-serif;
+	color: var(--ink);
+	background: #0d1a15;
 }
 
 html {
