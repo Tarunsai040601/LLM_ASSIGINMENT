@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f2f7e9">
+    <title>Wild About Food | Animal Food Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#top" aria-label="Wild About Food home">
+            <span class="brand-mark" aria-hidden="true">✳</span>
+            <span>little explorers</span>
+        </a>
+        <span class="topbar-note"><span class="live-dot" aria-hidden="true"></span> ANIMAL SCIENCE · QUIZ 01</span>
+    </header>
+
+    <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <p class="eyebrow"><span aria-hidden="true">🌿</span> YOUR WILDLIFE CHALLENGE</p>
+                <h1 id="hero-title">Wild about<br><span>food!</span></h1>
+                <p class="hero-description">What’s on the menu in the animal kingdom? Explore how different creatures find and eat their food.</p>
+                <a class="start-button" href="#test">Let’s explore <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="hero-art" aria-label="A cheerful frog beside a lily pond">
+                <div class="sun-disc"></div>
+                <span class="sparkle sparkle-one" aria-hidden="true">✳</span>
+                <span class="sparkle sparkle-two" aria-hidden="true">✦</span>
+                <div class="orbit orbit-one"><span>🍃</span></div>
+                <div class="orbit orbit-two"><span>🪰</span></div>
+                <div class="lily lily-back"></div>
+                <div class="frog-platform"><span class="frog" aria-hidden="true">🐸</span></div>
+                <div class="lily lily-front"></div>
+                <span class="hero-caption">Meet Freddie<br>the frog</span>
+            </div>
+            <div class="hero-bottom" aria-hidden="true"><span>CURIOUS MINDS, HAPPY ANIMALS</span><span>SCROLL TO BEGIN ↓</span></div>
+        </section>
+
+        <section class="test-shell" id="test" aria-labelledby="test-title">
+            <div class="test-heading">
+                <div>
+                    <p class="eyebrow">READY, SET, DISCOVER</p>
+                    <h2 id="test-title">The animal food test</h2>
+                </div>
+                <div class="progress-wrap">
+                    <div class="progress-label"><span>Your progress</span><span id="progress-text">0 of 20 answered</span></div>
+                    <div class="progress-track" id="progress-track" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0">
+                        <span class="progress-fill" id="progress-fill"></span>
+                    </div>
+                </div>
+            </div>
+
+            <form id="quiz-form" novalidate>
+                <section class="quiz-section section-one" aria-labelledby="section-one-title">
+                    <div class="section-heading">
+                        <span class="section-number">01</span>
+                        <div><h3 id="section-one-title">Pick the right answer</h3><p>Choose one answer for each question.</p></div>
+                        <span class="section-emoji" aria-hidden="true">🔎</span>
+                    </div>
+
+                    <fieldset class="question" data-question="q1">
+                        <legend><span class="question-number">1</span>A _____ has a long sticky tongue.</legend>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q1" value="snake"><span class="option-letter">A</span><span>snake</span></label>
+                            <label class="option"><input type="radio" name="q1" value="rat"><span class="option-letter">B</span><span>rat</span></label>
+                            <label class="option"><input type="radio" name="q1" value="frog"><span class="option-letter">C</span><span>frog</span></label>
+                            <label class="option"><input type="radio" name="q1" value="butterfly"><span class="option-letter">D</span><span>butterfly</span></label>
+                        </div>
+                        <p class="question-feedback" aria-live="polite"></p>
+                    </fieldset>
+
+                    <fieldset class="question" data-question="q2">
+                        <legend><span class="question-number">2</span>A butterfly _____ nectar.</legend>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q2" value="swallows"><span class="option-letter">A</span><span>swallows</span></label>
+                            <label class="option"><input type="radio" name="q2" value="chews"><span class="option-letter">B</span><span>chews</span></label>
+                            <label class="option"><input type="radio" name="q2" value="sucks"><span class="option-letter">C</span><span>sucks</span></label>
+                            <label class="option"><input type="radio" name="q2" value="drinks"><span class="option-letter">D</span><span>drinks</span></label>
+                        </div>
+                        <p class="question-feedback" aria-live="polite"></p>
+                    </fieldset>
+
+                    <fieldset class="question" data-question="q3">
+                        <legend><span class="question-number">3</span>A _____ does not hunt other animals for food.</legend>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q3" value="tiger"><span class="option-letter">A</span><span>tiger</span></label>
+                            <label class="option"><input type="radio" name="q3" value="bear"><span class="option-letter">B</span><span>bear</span></label>
+                            <label class="option"><input type="radio" name="q3" value="fox"><span class="option-letter">C</span><span>fox</span></label>
+                            <label class="option"><input type="radio" name="q3" value="zebra"><span class="option-letter">D</span><span>zebra</span></label>
+                        </div>
+                        <p class="question-feedback" aria-live="polite"></p>
+                    </fieldset>
+
+                    <fieldset class="question" data-question="q4">
+                        <legend><span class="question-number">4</span>A _____ laps liquid with its long tongue.</legend>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q4" value="dog"><span class="option-letter">A</span><span>dog</span></label>
+                            <label class="option"><input type="radio" name="q4" value="owl"><span class="option-letter">B</span><span>owl</span></label>
+                            <label class="option"><input type="radio" name="q4" value="elephant"><span class="option-letter">C</span><span>elephant</span></label>
+                            <label class="option"><input type="radio" name="q4" value="camel"><span class="option-letter">D</span><span>camel</span></label>
+                        </div>
+                        <p class="question-feedback" aria-live="polite"></p>
+                    </fieldset>
+
+                    <fieldset class="question" data-question="q5">
+                        <legend><span class="question-number">5</span>A _____ sucks blood.</legend>
+                        <div class="options">
+                            <label class="option"><input type="radio" name="q5" value="snake"><span class="option-letter">A</span><span>snake</span></label>
+                            <label class="option"><input type="radio" name="q5" value="frog"><span class="option-letter">B</span><span>frog</span></label>
+                            <label class="option"><input type="radio" name="q5" value="leech"><span class="option-letter">C</span><span>leech</span></label>
+                            <label class="option"><input type="radio" name="q5" value="spider"><span class="option-letter">D</span><span>spider</span></label>
+                        </div>
+                        <p class="question-feedback" aria-live="polite"></p>
+                    </fieldset>
+                </section>
+
+                <section class="quiz-section section-two" aria-labelledby="section-two-title">
+                    <div class="section-heading">
+                        <span class="section-number">02</span>
+                        <div><h3 id="section-two-title">True or false?</h3><p>Tap the answer you think is right.</p></div>
+                        <span class="section-emoji" aria-hidden="true">💡</span>
+                    </div>
+
+                    <fieldset class="question" data-question="q6">
+                        <legend><span class="question-number">1</span>Animals can prepare their own food.</legend>
+                        <div class="boolean-options">
+                            <label class="option"><input type="radio" name="q6" value="true"><span>True</span></label>
+                            <label class="option"><input type="radio" name="q6" value="false"><span>False</span></label>
+                        </div>
+                        <p class="question-feedback" aria-live="polite"></p>
+                    </fieldset>
+                    <fieldset class="question" data-question="q7">
+                        <legend><span class="question-number">2</span>All animals eat only plants.</legend>
+                        <div class="boolean-options">
+                            <label class="option"><input type="radio" name="q7" value="true"><span>True</span></label>
+                            <label class="option"><input type="radio" name="q7" value="false"><span>False</span></label>
+                        </div>
+                        <p class="question-feedback" aria-live="polite"></p>
+                    </fieldset>
+                    <fieldset class="question" data-question="q8">
+                        <legend><span class="question-number">3</span>Snakes chew their prey.</legend>
+                        <div class="boolean-options">
+                            <label class="option"><input type="radio" name="q8" value="true"><span>True</span></label>
+                            <label class="option"><input type="radio" name="q8" value="false"><span>False</span></label>
+                        </div>
+                        <p class="question-feedback" aria-live="polite"></p>
+                    </fieldset>
+                    <fieldset class="question" data-question="q9">
+                        <legend><span class="question-number">4</span>Mosquitoes suck the blood from our body.</legend>
+                        <div class="boolean-options">
+                            <label class="option"><input type="radio" name="q9" value="true"><span>True</span></label>
+                            <label class="option"><input type="radio" name="q9" value="false"><span>False</span></label>
+                        </div>
+                        <p class="question-feedback" aria-live="polite"></p>
+                    </fieldset>
+                    <fieldset class="question" data-question="q10">
+                        <legend><span class="question-number">5</span>Herbivores are eaten by carnivores.</legend>
+                        <div class="boolean-options">
+                            <label class="option"><input type="radio" name="q10" value="true"><span>True</span></label>
+                            <label class="option"><input type="radio" name="q10" value="false"><span>False</span></label>
+                        </div>
+                        <p class="question-feedback" aria-live="polite"></p>
+                    </fieldset>
+                </section>
+
+                <section class="quiz-section section-three" aria-labelledby="section-three-title">
+                    <div class="section-heading">
+                        <span class="section-number">03</span>
+                        <div><h3 id="section-three-title">Name two animals</h3><p>Write one animal in each box.</p></div>
+                        <span class="section-emoji" aria-hidden="true">✏️</span>
+                    </div>
+
+                    <div class="written-question" data-question="q11">
+                        <p><span class="question-number">1</span>Plant-eating animals</p>
+                        <label class="answer-field"><span class="sr-only">First plant-eating animal</span><input type="text" name="q11a" autocomplete="off" placeholder="Animal one" data-accepted="cow|goat|sheep|deer|elephant|giraffe|zebra|horse|rabbit|camel|buffalo|bison|hippopotamus|rhino|rhinoceros|donkey|panda|koala|deer|moose|antelope|sheep|cattle"></label>
+                        <label class="answer-field"><span class="sr-only">Second plant-eating animal</span><input type="text" name="q11b" autocomplete="off" placeholder="Animal two" data-accepted="cow|goat|sheep|deer|elephant|giraffe|zebra|horse|rabbit|camel|buffalo|bison|hippopotamus|rhino|rhinoceros|donkey|panda|koala|moose|antelope|cattle"></label>
+                        <p class="written-feedback" aria-live="polite"></p>
+                    </div>
+                    <div class="written-question" data-question="q12">
+                        <p><span class="question-number">2</span>Flesh-eating animals</p>
+                        <label class="answer-field"><span class="sr-only">First flesh-eating animal</span><input type="text" name="q12a" autocomplete="off" placeholder="Animal one" data-accepted="lion|tiger|leopard|cheetah|wolf|fox|eagle|hawk|owl|snake|crocodile|alligator|shark|polar bear|bear|hyena|lynx|cougar|panther|jaguar|wildcat"></label>
+                        <label class="answer-field"><span class="sr-only">Second flesh-eating animal</span><input type="text" name="q12b" autocomplete="off" placeholder="Animal two" data-accepted="lion|tiger|leopard|cheetah|wolf|fox|eagle|hawk|owl|snake|crocodile|alligator|shark|polar bear|bear|hyena|lynx|cougar|panther|jaguar|wildcat"></label>
+                        <p class="written-feedback" aria-live="polite"></p>
+                    </div>
+                    <div class="written-question" data-question="q13">
+                        <p><span class="question-number">3</span>Animals that swallow their food</p>
+                        <label class="answer-field"><span class="sr-only">First animal that swallows its food</span><input type="text" name="q13a" autocomplete="off" placeholder="Animal one" data-accepted="snake|frog|toad|lizard|gecko|chameleon|crocodile|alligator|pelican|heron|stork|kingfisher|whale|dolphin|shark"></label>
+                        <label class="answer-field"><span class="sr-only">Second animal that swallows its food</span><input type="text" name="q13b" autocomplete="off" placeholder="Animal two" data-accepted="snake|frog|toad|lizard|gecko|chameleon|crocodile|alligator|pelican|heron|stork|kingfisher|whale|dolphin|shark"></label>
+                        <p class="written-feedback" aria-live="polite"></p>
+                    </div>
+                    <div class="written-question" data-question="q14">
+                        <p><span class="question-number">4</span>Animals that gnaw their food</p>
+                        <label class="answer-field"><span class="sr-only">First animal that gnaws its food</span><input type="text" name="q14a" autocomplete="off" placeholder="Animal one" data-accepted="rat|mouse|rabbit|squirrel|beaver|hamster|guinea pig|chipmunk|porcupine|capybara|prairie dog|vole|marmot|gerbil"></label>
+                        <label class="answer-field"><span class="sr-only">Second animal that gnaws its food</span><input type="text" name="q14b" autocomplete="off" placeholder="Animal two" data-accepted="rat|mouse|rabbit|squirrel|beaver|hamster|guinea pig|chipmunk|porcupine|capybara|prairie dog|vole|marmot|gerbil"></label>
+                        <p class="written-feedback" aria-live="polite"></p>
+                    </div>
+                    <div class="written-question" data-question="q15">
+                        <p><span class="question-number">5</span>Animals that eat flesh from dead animals</p>
+                        <label class="answer-field"><span class="sr-only">First animal that eats flesh from dead animals</span><input type="text" name="q15a" autocomplete="off" placeholder="Animal one" data-accepted="vulture|hyena|jackal|crow|raven|condor|buzzard|kestrel|coyote|wolf|eagle|marabou stork|warthog"></label>
+                        <label class="answer-field"><span class="sr-only">Second animal that eats flesh from dead animals</span><input type="text" name="q15b" autocomplete="off" placeholder="Animal two" data-accepted="vulture|hyena|jackal|crow|raven|condor|buzzard|kestrel|coyote|wolf|eagle|marabou stork|warthog"></label>
+                        <p class="written-feedback" aria-live="polite"></p>
+                    </div>
+                </section>
+
+                <div class="submit-area">
+                    <p>Take your best guess. You can always try again!</p>
+                    <button class="submit-button" type="submit"><span>Check my answers</span><span aria-hidden="true">✦</span></button>
+                    <button class="reset-button" type="reset"><span aria-hidden="true">↻</span> Start over</button>
+                </div>
+            </form>
+
+            <section class="results" id="results" aria-live="polite" aria-atomic="true" hidden>
+                <span class="results-star" aria-hidden="true">✦</span>
+                <div><p class="eyebrow" id="results-kicker">TEST COMPLETE</p><h2 id="results-title">Your score</h2><p id="results-message"></p></div>
+                <div class="score-bubble"><span id="score-value">0</span><span>/ 20</span></div>
+            </section>
+        </section>
+    </main>
+    <footer><span>KEEP EXPLORING <span aria-hidden="true">✳</span></span><span>There’s always more to discover.</span></footer>
+</body>
+</html>
